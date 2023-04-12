@@ -1,0 +1,5 @@
+{% for post in post_list %}
+  <ul>
+    <li><a href="{% url 'j:comments' slug=post.subjeddit.slug comments_slug=post.slug %}">{{ post.title }}</a></li>
+  </ul>
+{% endfor %}

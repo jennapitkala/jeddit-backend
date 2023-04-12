@@ -1,0 +1,10 @@
+
+{% if subjeddit_list %}
+<ul>
+    {% for subjeddit in subjeddit_list %}
+        <li><a href="{% url 'j:index' subjeddit.title %}">j/{{ subjeddit.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no subjeddits.</p>
+{% endif %}
