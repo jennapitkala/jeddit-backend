@@ -5,11 +5,11 @@ from .models import Post
   
 
 class PostsIndexView(generic.ListView):
-    model = Post
+    model = PostModel
     template_name = 'posts/detail.html'
     context_object_name = 'comments_list'
     def get_queryset(self):
-        return Post.objects.filter(Post.subjeddit.title == self.slug).order_by('-creation_date')"""
+        return PostModel.objects.filter(PostModel.subjeddit.title == self.slug).order_by('-creation_date')"""
         
         
 from django.http import HttpResponse

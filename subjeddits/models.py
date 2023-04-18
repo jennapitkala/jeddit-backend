@@ -3,7 +3,7 @@ import datetime
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
-class Subjeddit(models.Model):
+class SubjedditModel(models.Model):
     title = models.CharField(max_length=21)
     creation_date = models.DateTimeField('Created', default=datetime.datetime.now)
     slug = models.SlugField(null=False, unique=True)

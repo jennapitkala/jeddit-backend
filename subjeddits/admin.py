@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from .models import Subjeddit
+from .models import SubjedditModel
 
-class SubjedditAdmin(admin.ModelAdmin):
+class SubjedditModelAdmin(admin.ModelAdmin):
     list_display = ("title",)
     prepopulated_fields = {"slug": ("title",)}
 
-admin.site.register(Subjeddit, SubjedditAdmin)
+admin.site.register(SubjedditModel, SubjedditModelAdmin)
