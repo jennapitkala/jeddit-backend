@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime
 from django.urls import reverse
-from django.template.defaultfilters import slugify # new
+from django.template.defaultfilters import slugify
 
 from subjeddits.models import SubjedditModel
 
@@ -19,9 +19,10 @@ class PostModel(models.Model):
     def get_absolute_url(self):
         return reverse("j:comments", kwargs={"slug": self.subjeddit.slug, "comments_slug": self.slug})
     
-    def save(self, *args, **kwargs): #new function
+    def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
+    
     #author will come later
-    #comments will come later
+    #should I include a comment relationship here?

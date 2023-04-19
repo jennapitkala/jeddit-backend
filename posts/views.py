@@ -1,23 +1,24 @@
-"""from django.views.generic.list import ListView
 from django.views import generic
-from .models import Post
+from comments.models import CommentModel
+from .models import PostModel
 
-  
 
-class PostsIndexView(generic.ListView):
-    model = PostModel
+
+class CommentSectionView(generic.ListView):
+    model = CommentModel
     template_name = 'posts/detail.html'
-    context_object_name = 'comments_list'
+    context_object_name = 'comment_list'
+    
     def get_queryset(self):
-        return PostModel.objects.filter(PostModel.subjeddit.title == self.slug).order_by('-creation_date')"""
-        
-        
-from django.http import HttpResponse
+        # Retrieve the values from the URL
+        comments_slug = self.kwargs['comments_slug']
+        # later you have to filter better. What if two different users have the same post title in the same subjeddit?
+        queryset = CommentModel.objects.filter(post__slug=comments_slug)
+        return queryset
 
-
-def PostsIndexView(request, slug, comments_slug):
-    return HttpResponse("Hello, world. You're at the posts index / comment section.")
-
-
-
-# made some chagnes to make better post commebnts upvoting 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post_slug = self.kwargs['comments_slug']
+        post = PostModel.objects.get(slug=post_slug)
+        context['post'] = post
+        return context

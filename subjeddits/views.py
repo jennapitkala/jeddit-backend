@@ -1,7 +1,5 @@
-#from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views import generic
-from .models import SubjedditModel
 
 from posts.models import PostModel
 

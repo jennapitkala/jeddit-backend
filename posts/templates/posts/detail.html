@@ -1,1 +1,10 @@
-Hi there
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<br>
+Comments
+<br>
+{% for comment in comment_list %}
+  <ul>
+    <li>{{comment}}</li>
+  </ul>
+{% endfor %}
